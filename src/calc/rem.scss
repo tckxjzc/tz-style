@@ -1,0 +1,4 @@
+//移动端
+@function toRem($x) {
+  @return $x*320/750/16*1rem;
+}

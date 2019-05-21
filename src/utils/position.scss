@@ -1,0 +1,6 @@
+//居中
+@mixin ps-center{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}

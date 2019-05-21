@@ -1,0 +1,35 @@
+/**
+ * media
+ */
+/**
+变化范围
+ */
+$screen_width: (
+        360px,
+        375px,
+        392px,
+        412px,
+        414px,
+        440px
+);
+
+@for $i from 1 through length($screen_width) {
+  $item: nth($screen_width, $i);
+  @media(min-width: $item) {
+    html {
+      font-size: $item/320*16;
+    }
+  }
+}
+/**
+超出一定范围不在变化
+ */
+@media (min-width: 720px) {
+  html {
+    font-size: 24px;
+  }
+  body {
+    font-size: 14px;
+  }
+
+}

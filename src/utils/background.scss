@@ -1,0 +1,65 @@
+@import "../anim/index";
+@mixin bg-hover($bg,$duration:.3s){
+  background-color: $bg;
+  transition: background-color $duration;
+  &:hover{
+    background-color: darken($bg,10%);
+  }
+  &:active{
+    background-color: darken($bg,15%);
+  }
+}
+
+@mixin bg-wave($bg,$size,$left:0,$bottom:0,$duration:7s,$radius:45%){
+  position: relative;
+  overflow: hidden;
+  &:before,
+  &::after{
+    content: "";
+    position: absolute;
+    width: $size;
+    height: $size;
+    left: $left;
+    bottom: $bottom;
+    animation: rotate-wave $duration;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    border-radius: $radius;
+    background-color: $bg;
+  }
+  &::after{
+    opacity: 0.5;
+    border-radius: $radius+2%;
+    animation-duration: $duration/3;
+  }
+}
+
+@mixin bg-wave-single($fg,$bg,$size,$left:0,$bottom:0,$duration:7s,$radius:45%){
+  position: relative;
+  overflow: hidden;
+  &:before{
+
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -2;
+    background-color: $bg;
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: $size;
+    height: $size;
+    left: $left;
+    bottom: $bottom;
+    animation: rotate-wave $duration;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    border-radius: $radius;
+    background-color: $fg;
+  }
+}
